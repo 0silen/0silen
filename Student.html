@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <title>Navigation Bar Example</title>
+  <link rel="stylesheet" href="../css/Student_style.css">
+  <link rel="stylesheet" href="../../css/first_page_style.css">
+
+  <style>
+    /* 新添加的样式 */
+    .edit-avatar {
+      margin-top: 20px;
+    }
+
+    .edit-avatar h4 {
+      margin-bottom: 10px;
+    }
+
+    .edit-avatar input[type="file"] {
+      margin-bottom: 10px;
+    }
+
+    .user-avatar {
+      margin-top: 20px;
+    }
+
+    .user-avatar img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+    }
+  </style>
+</head>
+<body>
+<div class="main-content">
+  <div class="top-navigation-bar">
+    <div class="logo">
+      <img src="../image/ChaoTianjiang.jpg" alt="Website Logo"/>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="#">主页</a></li>
+      <li><a href="#">班级</a></li>
+      <li><a href="#">作业</a></li>
+      <li><a href="#">题库</a></li>
+    </ul>
+    <div class="search-container">
+      <input type="text" placeholder="Search..."/>
+      <button><i class="fas fa-search"></i></button>
+    </div>
+    <div class="login-register">
+      <button>登录</button>
+      <button>注册</button>
+    </div>
+    <div class="theme-switcher" onclick="toggleDarkMode()">
+      <i class="far fa-moon"></i> 晚间模式
+    </div>
+  </div>
+  <!-- 学生信息部分 -->
+  <!-- 学生信息与编辑头像合并部分 -->
+  <div class="student-info-box">
+    <div class="edit-avatar">
+        <h4>编辑头像</h4>
+        <img id="avatar-image" src="../image/Nu11.png" alt="设置头像">
+        <div class="button-group"> <!-- 新增的容器 -->
+            <input type="file" id="avatar-input" accept="image/*">
+            <button onclick="uploadAvatar()">上传头像</button>
+        </div>
+    </div>
+    <div class="personal-info">
+        <h3>学生个人信息</h3>
+        <p><strong>姓名：</strong></p>
+        <p><strong>学号：</strong></p>
+        <p><strong>年级：</strong></p>
+        <p><strong>专业：</strong></p>
+        <hr>
+        <h4>安全信息</h4>
+        <p><strong>邮箱：</strong></p>
+        <p><strong>电话号码：</strong></p>
+        <p><strong>QQ号：</strong></p>
+        <button type="button">修改密码</button>
+    </div>
+</div>
+
+    <!-- 此处不需要额外的编辑头像和用户头像部分，因为已经包含在上面的盒子中 -->
+  </div>
+
+  <!-- 编辑头像部分 -->
+
+
+  <!-- 用户头像部分 -->
+
+
+  <!-- 页脚 -->
+  <footer>
+    <p>© 2024 教育平台. 版权所有。</p>
+    <p>联系我们: info@eduplatform.com</p>
+  </footer>
+</div> <!-- main-content 结束 -->
+
+<script>
+  function uploadAvatar() {
+    var fileInput = document.getElementById('avatar-input');
+    var file = fileInput.files[0];
+
+    // 清除文件名，使其在前端不显示
+    fileInput.value = ""; // 这将清除<input>中的文件名
+
+    if (file) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        var avatarImage = document.getElementById('avatar-image');
+        avatarImage.src = e.target.result;
+      }
+      reader.readAsDataURL(file);
+    }
+  }
+</script>
+
+</body>
+</html>
